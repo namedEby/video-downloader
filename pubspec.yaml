@@ -1,6 +1,12 @@
 name: videodownloader
 description: A new Flutter project.
 
+authors:
+ - Flutter Community <community@flutter.zone>
+ - Hung Duy Ha <hunghd.yb@gmail.com>
+homepage: https://github.com/fluttercommunity/flutter_downloader
+maintainer: Hung Duy Ha (@hnvn)
+
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -21,6 +27,23 @@ dependencies:
     sdk: flutter
   fancy_bottom_navigation: ^0.3.2
   font_awesome_flutter: ^8.7.0
+  
+  share: ^0.6.3+4
+  #url_launcher: ^5.2.5
+  permission_handler: ^4.0.0
+  flutter_staggered_grid_view: ^0.3.0
+  path_provider: ^1.4.4
+  image_gallery_saver: ^1.2.2
+  flutter_html: ^0.11.1
+  flutter_fab_dialer: ^0.1.1
+  #thumbnails: ^1.0.1
+  chewie: ^0.9.8+1
+  insta_html_parser: ^0.1.1
+  flutter_downloader: ^1.3.0
+  image_downloader: ^0.19.1
+  
+
+  #video_player: ^0.10.5+1
 
   
 

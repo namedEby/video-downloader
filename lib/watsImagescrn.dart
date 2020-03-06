@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import './viewphotos.dart';
 
-
 final Directory _photoDir =
     new Directory('/storage/emulated/0/WhatsApp/Media/.Statuses');
+
 class ImageScreen extends StatefulWidget {
   @override
   ImageScreenState createState() => new ImageScreenState();
 }
+
 class ImageScreenState extends State<ImageScreen> {
-  
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     if (!Directory("${_photoDir.path}").existsSync()) {
@@ -24,7 +24,7 @@ class ImageScreenState extends State<ImageScreen> {
         padding: EdgeInsets.only(bottom: 60.0),
         child: Center(
           child: Text(
-            "Install WhatsApp\nYour Friend's Status Will Show Here",
+            "Install WhatsApp\nYour Friend's Status Will Be Available Here",
             style: TextStyle(fontSize: 18.0),
           ),
         ),
@@ -74,7 +74,7 @@ class ImageScreenState extends State<ImageScreen> {
           body: Center(
             child: new Container(
                 padding: EdgeInsets.only(bottom: 60.0),
-                child: Text('No Image Found!', style: TextStyle(fontSize: 18.0),)),
+                child: Text('Sorry, No Image Found!', style: TextStyle(fontSize: 18.0),)),
           ),
         );
       }
