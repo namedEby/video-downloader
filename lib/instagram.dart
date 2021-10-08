@@ -4,6 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:insta_html_parser/insta_html_parser.dart';
 import 'package:image_downloader/image_downloader.dart';
 
+
+
+
+
 void main() {
   runApp(Instagram());
 }
@@ -23,6 +27,16 @@ class _InstagramState extends State<Instagram> {
   TextStyle _textStyleBold = TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold);
   TextStyle _textStyleUrl = TextStyle(fontSize: 16.0);
   List<Widget> _parsedWidgets = [];
+  
+  
+  
+
+
+   void showDownloadProgress(received, total) {
+    if (total != -1) {
+      print((received / total * 100).toStringAsFixed(0) + "%");
+    }
+  }
 
   @override
   void initState() {
@@ -33,6 +47,8 @@ class _InstagramState extends State<Instagram> {
 
   @override
   Widget build(BuildContext context) {
+
+   
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -78,6 +94,8 @@ class _InstagramState extends State<Instagram> {
                       child: Text('Get photos', style: _textStyleUrl,),
                       onPressed: () async {
 
+                        
+
                         List<Widget> _widgetsList = [];
                         Map<String, String> photosUrls = await InstaParser.photoUrlsFromPost('${_postUrlController.text}');
 
@@ -88,15 +106,24 @@ class _InstagramState extends State<Instagram> {
                           )
                         );
 
-                        // Small photo URL
+                        // Small photo URL 
                         _widgetsList.add(Text('Small photo:', style: _textStyleBold));
                         _widgetsList.add(
                           GestureDetector(
                             child: Text('${photosUrls['small'] != null ? photosUrls['small'] : ''}', style: _textStyleUrl,),
                             onTap: () async {
-                              setState(() {});
-                              Clipboard.setData(ClipboardData(text: '${photosUrls['small']}'));
-                              _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Copied small size photo url")));
+                              try {
+  // Saved with this method.
+  var imageId = await ImageDownloader.downloadImage(photosUrls['small']);
+  if (imageId == null) {
+    return;
+  }
+
+  // Below is a method of obtaining saved image information.
+ 
+} on PlatformException catch (error) {
+  print(error);
+}
                             }
                           )
                         );
@@ -121,16 +148,13 @@ class _InstagramState extends State<Instagram> {
                             onTap: () async {
                               try {
   // Saved with this method.
-  var imageId = await ImageDownloader.downloadImage(_postUrlController.text);
+  var imageId = await ImageDownloader.downloadImage(photosUrls['medium']);
   if (imageId == null) {
     return;
   }
 
   // Below is a method of obtaining saved image information.
-  var fileName = await ImageDownloader.findName(imageId);
-  var path = await ImageDownloader.findPath(imageId);
-  var size = await ImageDownloader.findByteSize(imageId);
-  var mimeType = await ImageDownloader.findMimeType(imageId);
+ 
 } on PlatformException catch (error) {
   print(error);
 }
@@ -156,9 +180,18 @@ class _InstagramState extends State<Instagram> {
                           GestureDetector(
                             child: Text('${photosUrls['large'] != null ? photosUrls['large'] : ''}', style: _textStyleUrl,),
                             onTap: () async {
-                              setState(() {});
-                              Clipboard.setData(ClipboardData(text: '${photosUrls['large']}'));
-                              _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Copied large size photo url")));
+                              try {
+  // Saved with this method.
+  var imageId = await ImageDownloader.downloadImage(photosUrls['large']);
+  if (imageId == null) {
+    return;
+  }
+
+  // Below is a method of obtaining saved image information.
+ 
+} on PlatformException catch (error) {
+  print(error);
+}
                             }
                           )
                         );
@@ -181,6 +214,7 @@ class _InstagramState extends State<Instagram> {
                       onPressed: () async {
                         List<Widget> _widgetsList = [];
                         String _videoUrl = await InstaParser.videoUrlFromPost('${_postUrlController.text}');
+                        print("video");
 
                         // Divider
                         _widgetsList.add(

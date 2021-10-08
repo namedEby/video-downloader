@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:videodownloader/accnt.dart';
 
 import 'package:videodownloader/facebook.dart';
 import 'package:videodownloader/instagram.dart';
@@ -18,7 +19,7 @@ void main() {
        FlutterDownloader.initialize();
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: new MyApp(),
+    home: new Account(),
   ));
 }
 
@@ -94,7 +95,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Savvy',
+     
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.teal,

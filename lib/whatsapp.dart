@@ -9,7 +9,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 
 class WhatsApp extends StatefulWidget {
-  @override
+  @override 
   WhatsAppState createState() => new WhatsAppState();
 }
 
@@ -63,7 +63,7 @@ class WhatsAppState extends State<WhatsApp> {
       if (_storagePermissionCheck == 1) {
         storagePermissionCheckInt = 1;
       } else {
-        storagePermissionCheckInt = 0;
+        storagePermissionCheckInt = 0; 
       }
 
       if (storagePermissionCheckInt == 1) {
